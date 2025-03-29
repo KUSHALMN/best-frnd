@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Friend Tribute</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            text-align: center;
+            padding: 50px;
+            color: #fff;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+        }
+        .slide {
+            display: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease-in-out;
+        }
+        .slide.active {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            font-size: 2.8em;
+        }
+        p {
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+        .heart {
+            font-size: 60px;
+            color: red;
+            animation: heartbeat 1.5s infinite;
+        }
+        img {
+            width: 85%;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+        }
+        .buttons, .choice-buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            background: #ff4b5c;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #d43f50;
+        }
+        .no-btn {
+            position: absolute;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slide active">
+            <h1>Hey ! ❤</h1>
+            <p>You are a shining light in my life, and I’m so grateful for you!</p>
+            <p>Thank you for being the most amazing friend ever!</p>
+            <img src="https://source.unsplash.com/600x400/?friendship,love" alt="Friendship Image">
+            <div class="heart">❤</div>
+        </div>
+        <div class="slide">
+            <h1>Our Friendship Timeline ⏳</h1>
+            <p>From the day we met to today, every moment has been special!</p>
+            <img src="https://source.unsplash.com/600x400/?memories,friends" alt="Timeline Image">
+        </div>
+        <div class="slide">
+            <h1>A Letter to My Best Friend 💌</h1>
+            <p></p>
+            <p>You are the reason I smile even on the hardest days. Thank you for always being there.</p>
+            <p>With love, always. ❤</p>
+        </div>
+        <div class="slide">
+            <h1>Will Our Friendship Last Forever? ❤</h1>
+            <p>There is only one right answer 😉</p>
+            <div class="choice-buttons">
+                <button onclick="confirmYes()">Yes ✅</button>
+                <button class="no-btn" id="no-btn" onmouseover="moveNoButton()">No ❌</button>
+            </div>
+            <div class="heart">❤</div>
+        </div>
+        <div class="slide">
+            <h1>Our Friendship Playlist 🎶</h1>
+            <p>These songs remind me of all our fun moments together.</p>
+            <ul>
+                <li>🎵 "Count on Me" - Bruno Mars</li>
+                <li>🎵 "Stand by Me" - Ben E. King</li>
+                <li>🎵 "You’ve Got a Friend" - James Taylor</li>
+            </ul>
+        </div>
+        <div class="slide">
+            <h1>Thank You for Everything!</h1>
+            <p>Through thick and thin, you have always been there.</p>
+            <p>I cherish our friendship more than words can say!</p>
+            <img src="https://source.unsplash.com/600x400/?gratitude,flowers" alt="Thank You Image">
+        </div>
+        <div class="buttons">
+            <button onclick="prevSlide()">❮ Previous</button>
+            <button onclick="nextSlide()">Next ❯</button>
+        </div>
+    </div>
+    <script>
+        let slides = document.querySelectorAll('.slide');
+        let index = 0;function showSlide(n) {
+        slides[index].classList.remove('active');
+        index = (n + slides.length) % slides.length;
+        slides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(index + 1);
+    }
+
+    function prevSlide() {
+        showSlide(index - 1);
+    }
+
+    function confirmYes() {
+        alert("Yay! I knew you'd say YES! 🎉 Our friendship is forever! 💖");
+    }
+    
+    function moveNoButton() {
+        let btn = document.getElementById('no-btn');
+        let x = Math.random() * window.innerWidth * 0.6;
+        let y = Math.random() * window.innerHeight * 0.6;
+        btn.style.left = x + 'px';
+        btn.style.top = y + 'px';
+    }
+</script>
+
+</body>
+</html>
